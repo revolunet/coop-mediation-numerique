@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Button from '@codegouvfr/react-dsfr/Button'
 import { SegmentedControl } from '@codegouvfr/react-dsfr/SegmentedControl'
+import { sPluriel } from '@app/ui/utils/pluriel/sPluriel'
 import type { MesStatistiquesPageData } from '@app/web/app/coop/(sidemenu-layout)/mes-statistiques/getMesStatistiquesPageData'
 import { AccompagnementPieChart } from '@app/web/app/coop/(sidemenu-layout)/mes-statistiques/_components/AccompagnementPieChart'
 import { QuantifiedShareLegend } from '@app/web/app/coop/(sidemenu-layout)/mes-statistiques/_components/QuantifiedShareLegend'
@@ -57,7 +58,8 @@ export const StatistiquesActivites = ({
                 <span className="fr-text--bold">
                   {totalCounts.accompagnements.collectifs.total}
                 </span>{' '}
-                participants
+                participation
+                {sPluriel(totalCounts.accompagnements.collectifs.total)}
               </>
             )}
           </StatistiqueAccompagnement>
@@ -199,12 +201,12 @@ export const StatistiquesActivites = ({
             <div className="fr-flex fr-align-items-center">
               <AccompagnementPieChart
                 size={128}
-                data={activites.mergedTypeLieu}
+                data={activites.typeLieu}
                 colors={canauxAccompagnementColors}
               />
               <QuantifiedShareLegend
                 classeName="fr-pl-3w"
-                quantifiedShares={activites.mergedTypeLieu}
+                quantifiedShares={activites.typeLieu}
                 colors={canauxAccompagnementColors}
               />
             </div>

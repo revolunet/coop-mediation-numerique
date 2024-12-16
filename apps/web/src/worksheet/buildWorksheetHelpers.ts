@@ -1,16 +1,16 @@
 import type { Workbook, Worksheet } from 'exceljs'
 import { getUserRoleLabel } from '@app/web/utils/getUserRoleLabel'
 import type { SessionUser } from '@app/web/auth/sessionUser'
-import { ActivitesFiltersLabels } from '@app/web/cra/generateActivitesFiltersLabels'
-import type { AuthenticatedMediateur } from '@app/web/auth/getAuthenticatedMediateur'
+import type { ActivitesFiltersLabels } from '@app/web/cra/generateActivitesFiltersLabels'
 import { onlyDefinedAndNotNull } from '@app/web/utils/onlyDefinedAndNotNull'
+import type { MediateurUser } from '@app/web/auth/userTypeGuards'
 
 export type WorksheetUser = Pick<
   SessionUser,
   'firstName' | 'lastName' | 'role' | 'id' | 'coordinateur'
 > & {
   mediateur: Pick<
-    AuthenticatedMediateur['mediateur'],
+    MediateurUser['mediateur'],
     'id' | 'conseillerNumerique'
   > | null
 }
